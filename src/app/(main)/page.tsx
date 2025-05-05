@@ -13,9 +13,7 @@ export const metadata: Metadata = {
 const fetchProduct = async (): Promise<Product[] | undefined> => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}products`, {
-      next: {
-        revalidate: 60,
-      },
+      cache: "no-cache",
     });
     const data = await res.json();
     return data;
@@ -27,9 +25,7 @@ const fetchProduct = async (): Promise<Product[] | undefined> => {
 const fetchCategory = async (): Promise<Category[] | undefined> => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}categories`, {
-      next: {
-        revalidate: 60,
-      },
+      cache: "no-cache",
     });
     const data = await res.json();
     return data;

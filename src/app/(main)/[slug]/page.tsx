@@ -7,9 +7,7 @@ import { createSlugFromName } from "@/utils/helper/slug";
 const fetchProduct = async (slug: string): Promise<Product | undefined> => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}products`, {
-      next: {
-        revalidate: 60,
-      },
+      cache: "no-cache",
     });
     const data: Product[] = await res.json();
     const selectedProduct = data.find(

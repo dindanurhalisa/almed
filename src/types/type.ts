@@ -11,7 +11,8 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
   images: Image[];
-};
+  category: Category;
+}
 
 export interface Banner {
   id: string;
@@ -40,7 +41,7 @@ export interface Image {
   url: string;
   createdAt: string;
   updatedAt: string;
-};
+}
 
 export interface Category {
   id: string;
@@ -49,10 +50,9 @@ export interface Category {
   name: string;
   createdAt: string;
   updatedAt: string;
-};
+}
 
 export type Sort = "newest" | "price_asc" | "price_desc" | "oldest";
-
 
 export interface OrderItem {
   id: string;
