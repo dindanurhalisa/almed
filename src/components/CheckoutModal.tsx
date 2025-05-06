@@ -261,7 +261,9 @@ const CheckoutModal = ({ show, total }: CheckoutModalProps) => {
                 />
                 {/* send payment proof to this Whatsapp, CTA to whatsapp */}
                 <div className="text-lg font-medium">Bukti Pembayaran</div>
-                <p className='text-sm text-neutral-500'>Kirim bukti pembayaran ke nomor ini:</p>
+                {/* display qr code qris photo, the photo is from public folder */}
+                <img src="/qris/qris.jpeg" alt="qris" className="w-72 h-72 mx-auto" />
+                <p className='text-sm text-neutral-500'>Kirim bukti pembayaran ke nomor ini : +6282146510812</p>
                 <button
                   type="button"
                   className="rounded-md bg-green-600 px-4 py-2 text-white flex items-center gap-2 justify-center hover:bg-green-700 transition-all"
