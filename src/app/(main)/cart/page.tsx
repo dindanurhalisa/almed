@@ -41,7 +41,7 @@ const CartPage = () => {
   );
 
   useEffect(()=>{
-    const calculateTotal = subtotal + 3000;
+    const calculateTotal = subtotal + 3000 + 10000;
     setTotal(calculateTotal);
   },[cartItems])
 
@@ -86,7 +86,7 @@ const CartPage = () => {
         <div className="top-32 flex h-64 flex-col rounded-lg bg-slate-50 p-4 shadow-md xl:sticky xl:w-64">
           <CheckoutPriceList label="Subtotal" price={subtotal} />
           <CheckoutPriceList label="Admin" price={3000} />
-          <CheckoutPriceList label="Ongkir" price={0} />
+          <CheckoutPriceList label="Ongkir" price={10000} />
           <div className="mb-4 mt-auto flex items-center justify-between text-lg font-bold text-neutral-900">
             <span className="font-normal">Total</span>
             <span>{formatToRupiah(total)}</span>
