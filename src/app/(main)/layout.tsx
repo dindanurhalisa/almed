@@ -21,7 +21,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "AlMed | Jual Beli Alat Kesehatan",
   description:
-    "AlMed adalah platform jual beli alat kesehatan, obat-obatan, dan perlengkapan medis",
+    "AlMed adalah platform jual beli alat kesehatan dan obat-obatan",
 };
 
 export default function RootLayout({
