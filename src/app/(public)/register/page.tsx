@@ -105,7 +105,7 @@ const RegisterPage = () => {
           </form>
           
           <div className="text-center text-sm">
-            <span className="text-gray-600">Already have an account? </span>
+            <span className="text-gray-600">Already have an account??? </span>
             <Link href="/login" className="font-medium text-rose-600 hover:text-rose-500">
               Sign in
             </Link>
