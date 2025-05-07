@@ -1,9 +1,8 @@
 'use client';
 
 import { formatToRupiah } from '@/utils/helper/formatCurrency';
-import { useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
-import { useState, FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { BiCheck, BiPhoneIncoming } from 'react-icons/bi';
 
@@ -43,10 +42,19 @@ const CheckoutModal = ({ show, total }: CheckoutModalProps) => {
     paymentProofUrl: ''
   });
   const [sendedWhatsapp, setSendedWhatsapp] = useState(false);
-
-  const { userId } = useAuth();
-
   const router = useRouter();
+
+  // Get user from cookie
+  const userCookie = document.cookie
+    .split("; ")
+    .find(row => row.startsWith("user="));
+
+  if (!userCookie) {
+    router.push('/login');
+    return;
+  }
+
+  const userObject = JSON.parse(decodeURIComponent(userCookie.split("=")[1]));
 
   const close = () => {
     router.push('/cart');
@@ -104,7 +112,7 @@ const CheckoutModal = ({ show, total }: CheckoutModalProps) => {
           phone: formData.phone,
           address: formData.address,
           postCode: formData.postCode,
-          userId,
+          userId: userObject.id,
           totalPay: total,
           paymentMethod,
           paymentProofUrl: formData.paymentProofUrl,
@@ -157,8 +165,9 @@ const CheckoutModal = ({ show, total }: CheckoutModalProps) => {
         <form onSubmit={handleSubmit}>
           <h1 className="text-lg font-medium">Pilih Metode Pembayaran</h1>
           <div className="flex gap-4 mb-3">
-            {method.map((item) => (
+            {method.map((item, key) => (
               <div
+                key={key}
                 onClick={() => setSelectedMethod(item.id)}
                 className={`flex h-36 w-48 cursor-pointer items-center justify-center rounded-md text-center transition-all  ${selectedMethod === item.id ? 'bg-blue-50 ring-2 ring-blue-300' : 'ring-1 ring-slate-300 hover:bg-slate-100'}`}
               >

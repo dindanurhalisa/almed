@@ -4,7 +4,7 @@ import CartList from '@/components/CartList';
 import CheckoutModal from '@/components/CheckoutModal';
 import { ProductCart } from '@/types/type';
 import { formatToRupiah } from '@/utils/helper/formatCurrency';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -12,6 +12,7 @@ const CartPage = () => {
   const [cartItems, setCartItems] = useState<ProductCart[]>([]);
   const [total, setTotal] = useState<number>(0);
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   const checkoutAction = searchParams.get('action') == 'checkout' || false;
 
@@ -91,14 +92,14 @@ const CartPage = () => {
             <span className="font-normal">Total</span>
             <span>{formatToRupiah(total)}</span>
           </div>
-          <Link
-            href={`?action=checkout`}
+          <button
+            onClick={() => router.push(`/cart?action=checkout`)}
             className="flex w-full justify-end text-lg "
           >
             <button className="w-full rounded-md bg-black px-4 py-3 text-white hover:bg-slate-800">
               Checkout
             </button>
-          </Link>
+          </button>
         </div>
       </div>
     </div>

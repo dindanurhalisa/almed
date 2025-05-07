@@ -1,5 +1,4 @@
 import "@/css/global.css";
-import { ClerkProvider } from "@clerk/nextjs";
 import { Metadata } from "next";
 import localFont from "next/font/local";
 
@@ -21,12 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.className} antialiased min-h-screen w-full flex flex-col items-center justify-center`}>
           {children}
         </body>
       </html>
-    </ClerkProvider>
   );
 }
