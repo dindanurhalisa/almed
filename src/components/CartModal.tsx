@@ -48,7 +48,7 @@ const CartModal = ({ cartItems, remove, closeModal }: CartModalProps) => {
           >
             <RiShoppingBasketLine className="h-12 w-12 text-rose-500" />
           </motion.div>
-          <h3 className="text-lg font-semibold text-neutral-800">Keranjang masih kosong</h3>
+          <h3 className="text-lg font-semibold text-neutral-800">Keranjang anda masih kosong</h3>
           <p className="text-center text-sm text-neutral-500">Tambahkan produk ke keranjang untuk mulai berbelanja</p>
             <motion.button 
               onClick={() => goToLink('/list')}
